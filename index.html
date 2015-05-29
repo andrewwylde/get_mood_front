@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript" /></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+  <script src="app.js" type="text/javascript" charset="utf-8"></script>
+  <script src="jankyscrape.js" type="text/javascript" charset="utf-8"></script>
+  <meta charset="U  TF-8">
+  <title>Set the Moo-d</title>
+</head>
+
+<body>
+  <!-- "I believe in dogshit spaghetti code that is completely unreadable" -->
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Set the Moo'd</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+          <li><a href="#">Link</a></li>
+        </ul>
+        <form class="navbar-form navbar-right" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Find Moo'd...">
+          </div>
+          <button type="submit" class="btn btn-default" id="moo">Moo</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Account <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </li>
+        </ul> <!-- Nav bar -->
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
+  <div class="container-fluid" style="padding-left:0; margin-left: -12px; margin-top: -15px;">
+    <div class="col-sm-1">
+      <div id="go-button" class="btn btn-danger" id="hot-cold">Hot-or-Cold</div>
+    </div>
+  </div>
+  <div class="jumbotron text-center">
+    <img src="resources/images/10675-illustration-of-a-cartoon-cow-pv.png" height="150" width="150" alt="Moo">
+    <h1>Set the Moo'd</h1>
+    <input type="text" id="product-search" list="json-datalist" placeholder="e.g. Andrew">
+    <button class="btn btn-danger">Get Moo'd</button>
+  </div>
+  <!-- /jumbotron -->
+  <!-- This is where the json data will be put in as options each time -->
+  <div class="row text-center">
+    <datalist id="json-datalist"></datalist>
+  </div>
+  </div>
+  <!-- row text-center -->
+  </div>
+</body>
+
+</html>
