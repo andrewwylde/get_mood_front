@@ -29,36 +29,34 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-          <li><a href="#">Link</a></li>
         </ul>
         <form class="navbar-form navbar-right" role="search">
+          <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+              Log in
+          </button>
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Find Moo'd...">
           </div>
           <button type="submit" class="btn btn-default" id="moo">Moo</button>
+
         </form>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Account <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
+              <li><a href="#">Profile</a></li>
+              <li>Normal</li>
+              <li>Dark Mode</li>
+              <li>8-bit</li>
             </ul>
           </li>
-        </ul> <!-- Nav bar -->
+        </ul>
+        <!-- Nav bar -->
       </div>
       <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
   </nav>
-  <div class="container-fluid" style="padding-left:0; margin-left: -12px; margin-top: -15px;">
-    <div class="col-sm-1">
-      <div id="go-button" class="btn btn-danger" id="hot-cold">Hot-or-Cold</div>
-    </div>
-  </div>
   <div class="jumbotron text-center">
     <img src="resources/images/10675-illustration-of-a-cartoon-cow-pv.png" height="150" width="150" alt="Moo">
     <h1>Set the Moo'd</h1>
@@ -73,6 +71,55 @@
   </div>
   <!-- row text-center -->
   </div>
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title" id="myModalLabel">Log in</h4>
+        </div>
+        <!-- /.modal-header -->
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" class="form-control" id="uLogin" placeholder="Login">
+                <label for="uLogin" class="input-group-addon glyphicon glyphicon-user"></label>
+              </div>
+            </div>
+            <!-- /.form-group -->
+            <div class="form-group">
+              <div class="input-group">
+                <input type="password" class="form-control" id="uPassword" placeholder="Password">
+                <label for="uPassword" class="input-group-addon glyphicon glyphicon-lock"></label>
+              </div>
+              <!-- /.input-group -->
+            </div>
+            <!-- /.form-group -->
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Remember me
+              </label>
+            </div>
+            <!-- /.checkbox -->
+          </form>
+        </div>
+        <!-- /.modal-body -->
+        <div class="modal-footer">
+          <button class="form-control btn btn-primary">Ok</button>
+          <div class="progress">
+            <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="100" style="width: 0%;">
+              <span class="sr-only">progress</span>
+            </div>
+          </div>
+        </div>
+        <!-- /.modal-footer -->
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
 </body>
 
 </html>
