@@ -66,6 +66,7 @@ Scrape.New = (function() {
       })
       .done(function() {
         console.log("success");
+
       })
       .fail(function() {
         console.log("error");
