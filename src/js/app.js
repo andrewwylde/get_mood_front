@@ -50,22 +50,21 @@ $(document).ready(function() {
 
 
   // This is to trigger the login from the enter keypress
-  // $('#uPassword').keydown(function(event) {
-  //   if (event.keyCode === 13) {
-  //     username = $('#uLogin').val();
-  //     password = $('#uPassword').val();
-  //     scrape.login(username, password);
-  //     flavors = scrape.getRawJson();
-  //   }
-  // });
+  $('#uPassword').keydown(function(event) {
+    if (event.keyCode === 13) {
+      username = $('#uEmail').val();
+      password = $('#uPassword').val();
+      scrape.login(username, password);
+      flavors = scrape.getRawJson();
+    }
+  });
 
-
-  $('button.form-control').on('click', function() {
-    username = $('#uLogin').val();
-    password = $('#uPassword').val();
-    scrape.login(username, password);
-    // flavors = scrape.getRawJson();
-
+/*Login/Register!*/
+  $('button#register').on('click', function() {
+    scrape.register();
+  });
+  $('button#login').on('click', function() {
+    scrape.login();
   });
 
 }); /*################## END OF $.READY ##################*/
