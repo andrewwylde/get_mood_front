@@ -19,32 +19,6 @@ $(document).ready(function() {
 
   /*End Product-Search*/
 
-  // $.ajax({
-  //     url: 'localhost:9000',
-  //     type: 'POST',
-  //     dataType: 'json',
-  //     headers: {
-  //       credentials: {
-  //         email: /*PUT SOMETHING HERE*/ null,
-  //         password: /*PUT SOMETHING HERE*/ null,
-  //       }
-  //     }
-  //   })
-  //   .done(function(data) {
-  //     data.forEach(function(element) {
-  //       element = element.toString();
-  //       tempJSON.push(element.name);
-  //     });
-  //     console.log("success");
-  //   })
-  //   .fail(function() {
-  //     console.log("error");
-  //   })
-  //   .always(function() {
-  //     console.log("complete");
-  //   });
-
-
   /*OPEN SESAME*/
   $('jumbotron').show();
 
@@ -59,7 +33,7 @@ $(document).ready(function() {
     }
   });
 
-/*Login/Register!*/
+  /*Login/Register!*/
   $('button#register').on('click', function() {
     scrape.register();
   });

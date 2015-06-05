@@ -2,7 +2,7 @@ var Scrape = Scrape || {};
 
 Scrape.New = (function() {
 
-  var password, password_confirmation, email, firstName, lastName;
+  var password, password_confirmation, email, firstName, lastName, token;
 
   function _getFlavors(token) {
     $.ajax({
