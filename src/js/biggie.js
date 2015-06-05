@@ -4,9 +4,9 @@ Scrape.New = (function() {
 
   var password, password_confirmation, email, firstName, lastName, token;
 
-  function _getFlavors(token) {
+  function _getFlavors() {
     $.ajax({
-        url: 'http://localhost:9000/flavors',
+        url: 'http://localhost:9000/flavor',
         type: 'GET',
         dataType: 'json',
         headers: {
@@ -66,6 +66,7 @@ Scrape.New = (function() {
       })
       .done(function() {
         console.log("success");
+        _success();
 
       })
       .fail(function() {
@@ -83,19 +84,19 @@ Scrape.New = (function() {
         data: params
       })
       .done(function(data, textStatus) {
-        console.log(data);
+        // console.log(data);
         console.log('Success');
         _success();
       })
       .fail(function(jqxhr, textStatus, errorThrown) {
         console.log("error");
-        console.log(textStatus);
+        // console.log(textStatus);
       });
   }
 
   /*This should take an Ajax Request's JSON and parse it into an array so that we can access it a bit more easily*/
   function _getRawJson(jsonFile) {
-    return _getFlavors;
+    return _getFlavors();
   }
 
   return {

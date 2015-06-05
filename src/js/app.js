@@ -1,7 +1,8 @@
 var Scrape = Scrape || {};
 
 
-var scrape, username, password, flavors;
+var scrape, username, password, flavors, login;
+login = false;
 scrape = Scrape.New;
 
 $(document).ready(function() {
@@ -23,13 +24,16 @@ $(document).ready(function() {
   $('jumbotron').show();
 
 
+
   // This is to trigger the login from the enter keypress
   $('#uPassword').keydown(function(event) {
     if (event.keyCode === 13) {
-      username = $('#uEmail').val();
-      password = $('#uPassword').val();
-      scrape.login(username, password);
-      flavors = scrape.getRawJson();
+      scrape.login();
+    }
+  });
+  $('#uPasswordNew').keydown(function(event) {
+    if (event.keyCode === 13) {
+      scrape.register();
     }
   });
 

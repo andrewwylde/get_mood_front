@@ -57,6 +57,11 @@ body {
   color: white;
 }
 
+#smodal {
+  height: 75px;
+  width: 150px;
+}
+
 #moo-pic {
     -vendor-animation-duration: 4s;
     -vendor-animation-delay: 3s;
