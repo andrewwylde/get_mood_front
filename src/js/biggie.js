@@ -4,31 +4,17 @@ Scrape.New = (function() {
 
   var password, password_confirmation, email, firstName, lastName, token;
 
-  function _getFlavors() {
-    $.ajax({
-        url: 'http://localhost:9000/flavor',
-        type: 'GET',
-        dataType: 'json',
-        headers: {
-          Authorization: 'Token token=' + token
-        }
-      })
-      .done(function(data, textStatus) {
-        console.log("success");
-        console.log(textStatus);
-        return data.flavor;
-      })
-      .fail(function() {
-        console.log("error");
-      });
+  function _hideLogin() {
+    $('#loginModal').modal('hide');
   }
 
   function _success() {
-    $('#loginModal').modal('hide');
-    $('div.bs-example-modal-sm').modal('show');
+    $('#login-success').modal('show');
+    _hideLogin();
   }
 
   function _failure() {
+    _hideLogin();
     $('#login-fail').modal('show');
   }
 
@@ -41,7 +27,6 @@ Scrape.New = (function() {
           first_name: $('#firstName').val(),
           last_name: $('#lastName').val(),
           password_confirmation: $('#uPasswordConfirmation').val()
-
         }
       });
     } else {
@@ -67,7 +52,6 @@ Scrape.New = (function() {
       .done(function() {
         console.log("success");
         _success();
-
       })
       .fail(function() {
         console.log("error");
@@ -84,25 +68,51 @@ Scrape.New = (function() {
         data: params
       })
       .done(function(data, textStatus) {
-        // console.log(data);
         console.log('Success');
+        token = data.token;
         _success();
+        flavors = data.flavors;
+        drinks = data.drinks;
       })
       .fail(function(jqxhr, textStatus, errorThrown) {
         console.log("error");
-        // console.log(textStatus);
       });
   }
 
   /*This should take an Ajax Request's JSON and parse it into an array so that we can access it a bit more easily*/
-  function _getRawJson(jsonFile) {
-    return _getFlavors();
+
+  function _autoPop(checkStr, $listEl, targetType) {
+    console.log(checkStr, $listEl, targetType);
+    $listEl.html('');
+
+    if (targetType == "flavor") {
+      for (var i = 0; i < flavors.length; i++) {
+        var flavName = flavors[i].name;
+
+        if (flavName.search(checkStr) != -1) {
+          var $newOption = '<option value="' + flavName + '"></option';
+          $listEl.append($newOption);
+
+        }
+      }
+    } else {
+      for (var j = 0; j < drinks.length; j++) {
+        var brewName = drinks[j].roast_name;
+
+        if (brewName.search(checkStr) != -1) {
+          var $newOption1 = '<option value="' + brewName + '"></option';
+          $listEl.append($newOption1);
+
+        }
+      }
+    }
+
   }
 
   return {
-    getRawJson: _getRawJson,
     login: _login,
-    register: _register
+    register: _register,
+    autoPop: _autoPop
   };
 
 })();

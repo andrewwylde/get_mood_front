@@ -1,9 +1,10 @@
 var Scrape = Scrape || {};
 
 
-var scrape, username, password, flavors, login;
-login = false;
+var scrape, username, password, flavors, drinks;
 scrape = Scrape.New;
+
+// debugger;
 
 $(document).ready(function() {
 
@@ -24,7 +25,6 @@ $(document).ready(function() {
   $('jumbotron').show();
 
 
-
   // This is to trigger the login from the enter keypress
   $('#uPassword').keydown(function(event) {
     if (event.keyCode === 13) {
@@ -43,6 +43,25 @@ $(document).ready(function() {
   });
   $('button#login').on('click', function() {
     scrape.login();
+  });
+
+  /*Searchtime*/
+  $('.search').keyup(function(event) {
+    // console.log(event);
+    // console.log($(this).val());
+    if (event.delegateTarget.id == "icecream-search") {
+      scrape.autoPop($(this).val(),$('#icecream-datalist'), "flavor");
+    } else {
+      scrape.autoPop($(this).val(),$('#coffee-datalist'), "coffee");
+    }
+    // console.log(event.delegateTarget.id)
+    // scrape.autoPop($(this).val(),event.delegateTarget.id);
+    // var checkStr = $('#icecream-search').val();
+    // // console.log(checkStr);
+    // if (flavors) {
+    //   scrape.autoPop(checkStr,);
+
+    // }
   });
 
 }); /*################## END OF $.READY ##################*/

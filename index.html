@@ -123,8 +123,8 @@
   <!-- /.modal-dialog -->
   </div>
   <!-- /.modal -->
-  <!-- Small modal -->
-  <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <!-- Small Success Modal -->
+  <div class="modal fade bs-example-modal-sm" id="login-success" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm" >
       <div class="modal-content" id="smodal">
         <div class="alert alert-success alert-dismissible fade in"  role="alert" style="height: 100%">
@@ -136,6 +136,23 @@
     </div>
   </div>
   <!-- /Small modal -->
+
+   <!-- Small Failure Modal -->
+  <div class="modal fade bs-example-modal-sm" id="login-fail" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" >
+      <div class="modal-content" id="smodal">
+        <div class="alert alert-danger alert-dismissible fade in"  role="alert" style="height: 100%">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></span>
+          </button>
+          <strong>Please Look over the form and try again!</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Small modal -->
+
+
+
   <!-- "I believe in dogshit spaghetti code that is completely unreadable" -->
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -145,8 +162,15 @@
           <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#loginModal"> Log in </button>
         </li>
       </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#loginModal"> My Profile </button>
+        </li>
+      </ul>
     </div>
   </nav>
+
+
   <!-- /.container-fluid -->
   <div class="jumbotron text-center animated fadeInDown">
     <img src="src/img/10675-illustration-of-a-cartoon-cow-pv.png" height="200" width="180" alt="Moo" id="#moo-pic">
@@ -158,7 +182,7 @@
   <div class="row">
     <div class="col-xs-4 col-xs-offset-4">
       <div class="center-af">
-        <input type="text" id="icecream-search" class="search" list="json-datalist" placeholder="e.g. Phish Phood">
+        <input type="text" id="icecream-search" class="search" list="icecream-datalist" placeholder="e.g. Phish Phood">
         <button class="btn btn-danger">Get Moo'd</button>
       </div>
     </div>
@@ -166,7 +190,7 @@
   <div class="row">
     <div class="col-xs-4 col-xs-offset-4">
       <div class="center-af">
-        <input type="text" id="coffee-search" class="search" list="json-datalist" placeholder="e.g. Coffee Coolatta">
+        <input type="text" id="coffee-search" class="search" list="coffee-datalist" placeholder="e.g. Coffee Coolatta">
         <button class="btn btn-primary">Get Drink..</button>
       </div>
     </div>
@@ -174,7 +198,9 @@
   <!-- /jumbotron -->
   <!-- This is where the json data will be put in as options each time -->
   <div class="row text-center">
-    <datalist id="json-datalist"></datalist>
+    <datalist id="icecream-datalist">
+    </datalist>
+    <datalist id="coffee-datalist"></datalist>
   </div>
   <!-- row text-center -->
 </body>
