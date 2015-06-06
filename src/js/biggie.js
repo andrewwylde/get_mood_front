@@ -86,6 +86,7 @@ Scrape.New = (function() {
     $listEl.html('');
 
     if (targetType == "flavor") {
+      // console.log('it is a flavor!');
       for (var i = 0; i < flavors.length; i++) {
         var flavName = flavors[i].name;
 
@@ -96,6 +97,7 @@ Scrape.New = (function() {
         }
       }
     } else {
+            // console.log('it is a flavor!');
       for (var j = 0; j < drinks.length; j++) {
         var brewName = drinks[j].roast_name;
 
