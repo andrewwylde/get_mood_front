@@ -41,7 +41,7 @@
                 <form role="form">
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="text" class="form-control" id="uEmail" placeholder="Email">
+                      <input type="text" class="form-control" name ="email" id="uEmail" placeholder="Email">
                       <label for="uEmail" class="input-group-addon glyphicon glyphicon-user"></label>
                     </div>
                   </div>
@@ -87,13 +87,13 @@
                   </div>
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="text" class="form-control" id="uEmailNew" placeholder="Email">
+                      <input type="text" class="form-control" id="uEmailNew" placeholder="Email" required>
                       <label for="uEmail" class="input-group-addon glyphicon glyphicon-align-left"></label>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="password" class="form-control" id="uPasswordNew" placeholder="Password">
+                      <input type="password" class="form-control" id="uPasswordNew" placeholder="Password" required>
                       <label for="uPassword" class="input-group-addon glyphicon glyphicon-lock"></label>
                     </div>
                   </div>
@@ -124,14 +124,13 @@
   </div>
   <!-- /.modal -->
   <!-- Small Success Modal -->
+   <!-- Small Failure Modal -->
   <div class="modal fade bs-example-modal-sm" id="login-success" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm" >
-      <div class="modal-content" id="smodal">
-        <div class="alert alert-success alert-dismissible fade in"  role="alert" style="height: 100%">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></span>
-          </button>
-          <strong>Login Successful!</strong>
-        </div>
+      <div class="modal-content alert alert-success">
+        <strong>Login Successful!</strong>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                  </button>
       </div>
     </div>
   </div>
@@ -140,12 +139,9 @@
    <!-- Small Failure Modal -->
   <div class="modal fade bs-example-modal-sm" id="login-fail" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm" >
-      <div class="modal-content" id="smodal">
-        <div class="alert alert-danger alert-dismissible fade in"  role="alert" style="height: 100%">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></span>
-          </button>
-          <strong>Please Look over the form and try again!</strong>
-        </div>
+      <div class="modal-content alert alert-danger">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                  </button>
       </div>
     </div>
   </div>

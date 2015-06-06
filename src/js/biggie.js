@@ -4,21 +4,42 @@ Scrape.New = (function() {
 
   var password, password_confirmation, email, firstName, lastName, token;
 
+
+//NEEDS WORK
   function _hideLogin() {
     $('#loginModal').modal('hide');
   }
 
+
+//NEEDS WORK
   function _success() {
     $('#login-success').modal('show');
     _hideLogin();
+    _clearPass();
   }
 
-  function _failure() {
-    _hideLogin();
+//NEEDS WORK
+  function _failure(failText) { //If login fails, hide modal and highlight erros
+    $('.alert-danger').html('<strong>'+failText+'</strong><br><p>Please check fields and try again</p>');
     $('#login-fail').modal('show');
   }
 
-  function _getForm(userType) {
+
+  /*CLEAR PASSWORD FIELDS AFTER SUCCESS*/
+  function _clearPass () {
+    $('#uEmail').val('');
+    $('#uEmailNew').val('');
+    $('#uPassword').val('');
+    $('#uPasswordNew').val('');
+    $('#firstName').val('');
+    $('#lastName').val('');
+    $('#uPasswordConfirmation').val('');
+  }
+  /*END CLEAR PASSWORD FIELDS AFTER SUCCESS*/
+
+
+/*CREDENTIALS GENERATOR*/
+  function _generateCredentials(userType) {
     if (userType == "new") {
       return JSON.stringify({
         credentials: {
@@ -39,9 +60,11 @@ Scrape.New = (function() {
     }
 
   }
+/*END CREDENTIALS GENERATOR*/
 
+/*REGISTER FUNCTION*/
   function _register() {
-    params = _getForm("new");
+    params = _generateCredentials("new");
     $.ajax({
         url: 'http://localhost:9000/register',
         type: 'POST',
@@ -54,12 +77,15 @@ Scrape.New = (function() {
         _success();
       })
       .fail(function() {
+        _failure("Registration Error");
         console.log("error");
       });
   }
+/*END REGISTER FUNCTION*/
 
+/*LOGIN FUNCTION*/
   function _login() {
-    params = _getForm("old");
+    params = _generateCredentials("old");
     $.ajax({
         url: 'http://localhost:9000/login',
         type: 'POST',
@@ -76,13 +102,21 @@ Scrape.New = (function() {
       })
       .fail(function(jqxhr, textStatus, errorThrown) {
         console.log("error");
+        _failure("Login Error");
       });
   }
+/*END LOGIN FUNCTION*/
 
-  /*This should take an Ajax Request's JSON and parse it into an array so that we can access it a bit more easily*/
 
+/*NORMALIZER*/
+  // function normalize (textToNormalize) {
+  //   textToNormalize.replace(//);
+  // }
+
+
+/*AUTOPOPULATOR*/
   function _autoPop(checkStr, $listEl, targetType) {
-    console.log(checkStr, $listEl, targetType);
+    // console.log(checkStr, $listEl, targetType);
     $listEl.html('');
 
     if (targetType == "flavor") {
@@ -111,10 +145,14 @@ Scrape.New = (function() {
 
   }
 
+  /*END AUTOPOPULATOR*/
+
+/*RETURN FUNCTIONS*/
   return {
     login: _login,
     register: _register,
     autoPop: _autoPop
   };
+/*END RETURN FUNCTIONS*/
 
-})();
+})(); //IIFE END & INVOCATION
