@@ -1,3 +1,11 @@
+.lg-logo:hover {
+  transform: scale(1.2);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+}
+
 
 .modal-dialog {
   width: 300px;
@@ -78,4 +86,8 @@ body {
     -vendor-animation-duration: 4s;
     -vendor-animation-delay: 3s;
     -vendor-animation-iteration-count: infinite;
+}
+
+input {
+  color: black;
 }

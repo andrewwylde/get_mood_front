@@ -3,7 +3,7 @@ var Scrape = Scrape || {};
 Scrape.New = (function() {
 
   var password, password_confirmation, email, firstName, lastName, token;
-
+loggedIn = false;
 
 //NEEDS WORK
   function _hideLogin() {
@@ -18,6 +18,7 @@ Scrape.New = (function() {
     $('#login-success').modal('show');
     _hideLogin();
     _clearPass();
+    loggedIn = true;
   }
 
 //NEEDS WORK
@@ -111,33 +112,33 @@ Scrape.New = (function() {
 
 
 /*NORMALIZER*/
-  // function normalize (textToNormalize) {
-  //   textToNormalize.replace(//);
-  // }
+  function normalize (textToNormalize) {
+  return textToNormalize.replace(/\W+|™|®/, '').toLowerCase();
+  }
 
 
 /*AUTOPOPULATOR*/
   function _autoPop(checkStr, $listEl, targetType) {
     // console.log(checkStr, $listEl, targetType);
     $listEl.html('');
+    checkStr = normalize(checkStr);
 
     if (targetType == "flavor") {
-      // console.log('it is a flavor!');
       for (var i = 0; i < flavors.length; i++) {
         var flavName = flavors[i].name;
+        var flavNameStripped = normalize(flavName);
 
-        if (flavName.search(checkStr) != -1) {
+        if (flavNameStripped.search(checkStr) != -1) {
           var $newOption = '<option value="' + flavName + '"></option';
           $listEl.append($newOption);
 
         }
       }
     } else {
-            // console.log('it is a flavor!');
       for (var j = 0; j < drinks.length; j++) {
         var brewName = drinks[j].roast_name;
-
-        if (brewName.search(checkStr) != -1) {
+        var brewNameStripped = normalize(brewName);
+        if (brewNameStripped.search(checkStr) != -1) {
           var $newOption1 = '<option value="' + brewName + '"></option';
           $listEl.append($newOption1);
 

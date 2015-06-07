@@ -1,25 +1,35 @@
 var Scrape = Scrape || {};
 
 /*VAR DECLARATION*/
-var scrape, flavors, drinks;
+var scrape, flavors, drinks, loggedIn;
 scrape = Scrape.New;
 /*END VAR DECLARATION*/
 
 $(document).ready(function() {
-
+  $('#icecream-search').hide();
+  $('#coffee-search').hide();
   /*OPEN SESAME*/
   $('jumbotron').show();
   /*END OPEN SESAME*/
 
-/*REGISTER/LOGIN RETURN PRESS HANDLER*/
-  $('#uPassword').keydown(function(event) {
-    if (event.keyCode === 13) {
-      scrape.login();
+  /*TOGGLE SEARCH*/
+  $('.lg-logo').on('click',function () {
+
+    if (this.id == "#moo-pic"){
+      $('#icecream-search').toggle();
+      $('#coffee-search').hide();
+
+    } else {
+      $('#coffee-search').toggle();
+      $('#icecream-search').hide();
     }
   });
-  $('#uPasswordNew').keydown(function(event) {
+  /*END TOGGLE SEARCH*/
+
+/*REGISTER/LOGIN RETURN PRESS HANDLER*/
+  $('.last-box').keydown(function(event) {
     if (event.keyCode === 13) {
-      scrape.register();
+      this.id == "uPassword" ? scrape.login() : scrape.register();
     }
   });
 /*END REGISTER/LOGIN RETURN PRESS HANDLER*/
@@ -34,17 +44,19 @@ $(document).ready(function() {
 /*END REGISTER/LOGIN CLICK HANDLER*/
 
   /*SEARCH TYPING HANDLER*/
-  $('.search').keyup(function(event) {
-    // console.log(event);
-    // console.log($(this).val());
-    var keyCodeEscapes = [37,38,39,40];
-    if (keyCodeEscapes.indexOf(event.keyCode) == -1){
-      if (event.delegateTarget.id == "icecream-search") {
-        scrape.autoPop($(this).val(),$('#icecream-datalist'), "flavor");
-      } else {
-        scrape.autoPop($(this).val(),$('#coffee-datalist'), "coffee");
+  $('.search input').keyup(function(event) {
+    if (loggedIn) {
+      var keyCodeEscapes = [37,38,39,40];
+      if (keyCodeEscapes.indexOf(event.keyCode) == -1){
+        if (this.list.id == "icecream-datalist") {
+          console.log('scraping for ice');
+          scrape.autoPop(this.value,$('#icecream-datalist'), "flavor");
+        } else {
+          scrape.autoPop(this.value,$('#coffee-datalist'), "coffee");
+        }
       }
     }
+
   });
 /*END SEARCH TYPING HANDLER*/
 
