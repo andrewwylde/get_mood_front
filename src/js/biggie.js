@@ -8,6 +8,8 @@ Scrape.New = (function() {
 //NEEDS WORK
   function _hideLogin() {
     $('#loginModal').modal('hide');
+    $('#login-button').hide();
+    $('#profile-dropdown').removeClass('hidden');
   }
 
 

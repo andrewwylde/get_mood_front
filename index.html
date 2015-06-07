@@ -155,12 +155,18 @@
       <!-- Brand and toggle get grouped for better mobile display -->
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#loginModal"> Log in </button>
+          <button type="button" class="btn btn-success navbar-btn" id="login-button" data-toggle="modal" data-target="#loginModal"> Log in </button>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#loginModal"> My Profile </button>
+        <div class="dropdown">
+          <button type="button" class="btn btn-primary dropdown-toggle hidden" id="profile-dropdown" data-toggle="dropdown" aria-expanded="true"> My Profile </button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">My Favorites</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Settings</a></li>
+            </ul>
+        </div><li>
+
         </li>
       </ul>
     </div>
