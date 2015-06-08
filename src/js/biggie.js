@@ -120,6 +120,8 @@ function _popPairings (pairingList, objType) {
   var thingName;
   $('#pairings-div').show();
   $('#pairings-list').html('');
+
+/*START FOR LOOP OF DOOM*/
   for (var i = 0; i < pairingList.length; i++) {
     $.ajax({
        url: 'https://mysterious-ocean-5529.herokuapp.com/'+objType+'/'+pairingList[i][IdType],
