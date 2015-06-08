@@ -91,3 +91,9 @@ body {
 input {
   color: black;
 }
+h1 {
+  color: white;
+}
+#pairings-list>li {
+  color:white;
+}

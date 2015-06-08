@@ -8,6 +8,8 @@ scrape = Scrape.New;
 $(document).ready(function() {
   $('#icecream-search').hide();
   $('#coffee-search').hide();
+  $('#pairings-div').hide();
+
   /*OPEN SESAME*/
   $('jumbotron').show();
   /*END OPEN SESAME*/
@@ -16,10 +18,12 @@ $(document).ready(function() {
   $('.lg-logo').on('click',function () {
 
     if (this.id == "#moo-pic"){
+      $('#icecream-search').addClass('animated fadeInDown');
       $('#icecream-search').toggle();
       $('#coffee-search').hide();
 
     } else {
+      $('#coffee-search').addClass('animated fadeInDown');
       $('#coffee-search').toggle();
       $('#icecream-search').hide();
     }
@@ -59,5 +63,26 @@ $(document).ready(function() {
 
   });
 /*END SEARCH TYPING HANDLER*/
+
+/*GET PAIRINGS*/
+
+$('.mood').on('click', function(event) {
+  event.preventDefault();
+  if (loggedIn) {
+    if (this.parentElement.id=="icecream-search") {
+      scrape.getPairings($(this).prev().val(),"drink");
+    } else {
+      scrape.getPairings($(this).prev().val(),"flavor");
+    }
+  } else {
+    scrape.fail("Need to Log In First!");
+  }
+
+  // console.log($(this).prev().val());
+  /* Act on the event */
+});
+
+/*END GET PAIRINGS*/
+
 
 }); /*################## END OF $.READY ##################*/

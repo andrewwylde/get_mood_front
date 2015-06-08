@@ -2,8 +2,11 @@ var Scrape = Scrape || {};
 
 Scrape.New = (function() {
 
-  var password, password_confirmation, email, firstName, lastName, token;
+  var password, password_confirmation, email, firstName, lastName, user_token, foundPairings;
 loggedIn = false;
+
+
+
 
 //NEEDS WORK
   function _hideLogin() {
@@ -48,8 +51,8 @@ loggedIn = false;
         credentials: {
           email: $('#uEmailNew').val(),
           password: $('#uPasswordNew').val(),
-          first_name: $('#firstName').val(),
-          last_name: $('#lastName').val(),
+          first_name: $('#uFirstName').val(),
+          last_name: $('#uLastName').val(),
           password_confirmation: $('#uPasswordConfirmation').val()
         }
       });
@@ -77,7 +80,7 @@ loggedIn = false;
       })
       .done(function() {
         console.log("success");
-        _success();
+        $('#loginModal').modal('hide');
       })
       .fail(function() {
         _failure("Registration Error");
@@ -98,7 +101,7 @@ loggedIn = false;
       })
       .done(function(data, textStatus) {
         console.log('Success');
-        token = data.token;
+        user_token = data.token;
         _success();
         flavors = data.flavors;
         drinks = data.drinks;
@@ -109,6 +112,58 @@ loggedIn = false;
       });
   }
 /*END LOGIN FUNCTION*/
+
+/*POPULATE PAIRINGS*/
+function _popPairings (pairingList, objType) {
+  var nameType = objType =="drink"? "roast_name":"name";
+  var IdType = objType == "drink"? "drink_id":"flavor_id";
+  var thingName;
+  $('#pairings-div').show();
+  $('#pairings-list').html('');
+  for (var i = 0; i < pairingList.length; i++) {
+    $.ajax({
+       url: 'http://localhost:9000/'+objType+'/'+pairingList[i][IdType],
+       type: 'GET',
+       headers: {Authorization: "Token token="+user_token},
+       contentType: 'application/json',
+       dataType: 'json'
+     })
+     .done(function(data) {
+       console.log(data[objType][nameType]);
+       thingName =  data[objType][nameType];
+       $('#pairings-list').append('<li>' + thingName + '</li>');
+     });
+
+  }
+}
+/*END POPULATE PAIRINGS*/
+
+/*GET PAIRINGS*/
+function _getPairings (pairingSearch, objectType) {
+  params = _generateCredentials();
+  $.ajax({
+    url: 'http://localhost:9000/pairing',
+    type: 'GET',
+    headers: {Authorization: "Token token="+user_token},
+    contentType: 'application/json',
+    dataType: 'json',
+  })
+  .done(function(data) {
+    console.log("success");
+    console.log(data);
+    foundPairings = data.pairing;
+    _popPairings(foundPairings, objectType);
+  })
+  .fail(function() {
+    console.log("error");
+  })
+  .always(function() {
+    console.log("complete");
+  });
+
+}
+
+/*END GET PAIRINGS*/
 
 
 /*NORMALIZER*/
@@ -154,7 +209,9 @@ loggedIn = false;
   return {
     login: _login,
     register: _register,
-    autoPop: _autoPop
+    autoPop: _autoPop,
+    getPairings: _getPairings,
+    fail: _failure
   };
 /*END RETURN FUNCTIONS*/
 
