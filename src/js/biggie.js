@@ -72,7 +72,7 @@ loggedIn = false;
   function _register() {
     params = _generateCredentials("new");
     $.ajax({
-        url: 'http://localhost:9000/register',
+        url: 'https://mysterious-ocean-5529.herokuapp.com/register',
         type: 'POST',
         contentType: 'application/json',
         dataType: 'json',
@@ -93,7 +93,7 @@ loggedIn = false;
   function _login() {
     params = _generateCredentials("old");
     $.ajax({
-        url: 'http://localhost:9000/login',
+        url: 'https://mysterious-ocean-5529.herokuapp.com/login',
         type: 'POST',
         contentType: 'application/json',
         dataType: 'json',
@@ -122,7 +122,7 @@ function _popPairings (pairingList, objType) {
   $('#pairings-list').html('');
   for (var i = 0; i < pairingList.length; i++) {
     $.ajax({
-       url: 'http://localhost:9000/'+objType+'/'+pairingList[i][IdType],
+       url: 'https://mysterious-ocean-5529.herokuapp.com/'+objType+'/'+pairingList[i][IdType],
        type: 'GET',
        headers: {Authorization: "Token token="+user_token},
        contentType: 'application/json',
@@ -142,7 +142,7 @@ function _popPairings (pairingList, objType) {
 function _getPairings (pairingSearch, objectType) {
   params = _generateCredentials();
   $.ajax({
-    url: 'http://localhost:9000/pairing',
+    url: 'https://mysterious-ocean-5529.herokuapp.com/pairing',
     type: 'GET',
     headers: {Authorization: "Token token="+user_token},
     contentType: 'application/json',
