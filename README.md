@@ -32,6 +32,11 @@ To use this site, please visit [Set The Moo'd](http://astoellis.github.io/proj_2
 5. Have semantically clean HTML and CSS
 6. Be deployed online, so that it is accessible to the public
 
+####Stretch Goals
+1. Style your app with Bootstrap, Foundation, or some other front-end library.
+2. Put some extra effort & thought into visual and UI design.
+
+
 ## Credits
 
 TODO: Write credits
