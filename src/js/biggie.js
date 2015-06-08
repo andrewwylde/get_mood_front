@@ -2,7 +2,7 @@ var Scrape = Scrape || {};
 
 Scrape.New = (function() {
 
-  var password, password_confirmation, email, firstName, lastName, user_token, foundPairings;
+  var password, password_confirmation, email, firstName, lastName, user_token, user_id, foundPairings;
 loggedIn = false;
 
 
@@ -79,12 +79,12 @@ loggedIn = false;
         data: params
       })
       .done(function() {
-        console.log("success");
+        // console.log("success");
         $('#loginModal').modal('hide');
       })
       .fail(function() {
         _failure("Registration Error");
-        console.log("error");
+        // console.log("error");
       });
   }
 /*END REGISTER FUNCTION*/
@@ -100,14 +100,14 @@ loggedIn = false;
         data: params
       })
       .done(function(data, textStatus) {
-        console.log('Success');
+        // console.log('Success');
         user_token = data.token;
         _success();
         flavors = data.flavors;
         drinks = data.drinks;
       })
       .fail(function(jqxhr, textStatus, errorThrown) {
-        console.log("error");
+        // console.log("error");
         _failure("Login Error");
       });
   }
@@ -131,14 +131,17 @@ function _popPairings (pairingList, objType) {
        dataType: 'json'
      })
      .done(function(data) {
-       console.log(data[objType][nameType]);
        thingName =  data[objType][nameType];
-       $('#pairings-list').append('<li>' + thingName + '</li>');
+       $('#pairings-list').append('<a href="#" class="list-group-item">' + thingName + '</a>');
      });
 
   }
 }
 /*END POPULATE PAIRINGS*/
+
+function pairingNames (pairData) {
+
+}
 
 /*GET PAIRINGS*/
 function _getPairings (pairingSearch, objectType) {
@@ -151,16 +154,15 @@ function _getPairings (pairingSearch, objectType) {
     dataType: 'json',
   })
   .done(function(data) {
-    console.log("success");
-    console.log(data);
+    // console.log("success");
     foundPairings = data.pairing;
     _popPairings(foundPairings, objectType);
   })
   .fail(function() {
-    console.log("error");
+    // console.log("error");
   })
   .always(function() {
-    console.log("complete");
+    // console.log("complete");
   });
 
 }
@@ -206,6 +208,28 @@ function _getPairings (pairingSearch, objectType) {
   }
 
   /*END AUTOPOPULATOR*/
+
+  /*DESTROY USER*/
+// function _destroyUser () {
+//   $.ajax({
+//     url: 'mysterious-ocean-5529.herokuapp.com/users/'+user_id,
+//     type: 'DELETE',
+//     dataType: 'json',
+//     headers: {Authorization: "Token token="+user_token}
+//   })
+//   .done(function() {
+//     console.log("success");
+//     _failure('your account has been removed');
+//   })
+//   .fail(function() {
+//     console.log("error");
+//   })
+//   .always(function() {
+//     console.log("complete");
+//   });
+
+// }
+  /*END DESTROY USER*/
 
 /*RETURN FUNCTIONS*/
   return {

@@ -160,8 +160,10 @@
         <div class="dropdown">
           <button type="button" class="btn btn-primary dropdown-toggle hidden" id="profile-dropdown" data-toggle="dropdown" aria-expanded="true"> My Profile </button>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="">My Favorites</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="">Settings</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">My Favorites</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Settings</a></li>
+              <li style="background-color: red" role="presentation" id="destroy-me"><a role="menuitem" tabindex="-1" href="#">DELETE ACCOUNT</a></li>
+
             </ul>
         </div><li>
 
@@ -193,9 +195,7 @@
 <div class="row">
   <div class="col-xs-4 col-xs-offset-5 animated fadeIn" id="pairings-div">
     <h1>Suggested Pairings:</h1>
-    <div id="pairings-list">
-      <ul>
-      </ul>
+    <div class="list-group" id="pairings-list">
     </div>
   </div>
 </div>

@@ -77,12 +77,15 @@ $('.mood').on('click', function(event) {
   } else {
     scrape.fail("Need to Log In First!");
   }
-
-  // console.log($(this).prev().val());
-  /* Act on the event */
 });
-
 /*END GET PAIRINGS*/
+
+/* DESTROY */
+// $('#destroy-me').on('click', function(event) {
+//   console.log('destroid');
+//   scrape.destroy();
+// });
+/* END DESTROY */
 
 
 }); /*################## END OF $.READY ##################*/
