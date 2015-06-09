@@ -132,6 +132,9 @@ Scrape.New = (function() {
         }
 
       }
+      if ($('#pairings-list').html() === '') {
+        $('#pairings-list').append('<h2>No Pairings Found...</h2>');
+      }
     }
     /*END POPULATE PAIRINGS*/
 
