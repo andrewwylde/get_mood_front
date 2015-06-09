@@ -72,7 +72,7 @@ Scrape.New = (function() {
   function _register() {
       params = _generateCredentials("new");
       $.ajax({
-          url: 'http://localhost:9000/register',
+          url: 'https://mysterious-ocean-5529.herokuapp.com/register',
           type: 'POST',
           contentType: 'application/json',
           dataType: 'json',
@@ -93,7 +93,7 @@ Scrape.New = (function() {
   function _login() {
       params = _generateCredentials("old");
       $.ajax({
-          url: 'http://localhost:9000/login',
+          url: 'https://mysterious-ocean-5529.herokuapp.com/login',
           type: 'POST',
           contentType: 'application/json',
           dataType: 'json',
@@ -139,7 +139,7 @@ Scrape.New = (function() {
   function _getPairings(pairingSearch, objectType) {
     params = _generateCredentials();
     $.ajax({
-        url: 'http://localhost:9000/pairing',
+        url: 'https://mysterious-ocean-5529.herokuapp.com/pairing',
         type: 'GET',
         headers: {
           Authorization: "Token token=" + user_token
