@@ -3,8 +3,8 @@ var Scrape = Scrape || {};
 Scrape.New = (function() {
   var password, password_confirmation, email, firstName, lastName, user_token, user_id, foundPairings;
   loggedIn = false;
-  // var domain = 'http://localhost:3000'
-  var domain = 'https://getmood.herokuapp.com';
+  var domain = 'http://localhost:3000';
+  // var domain = 'https://getmood.herokuapp.com';
 
 
 
@@ -79,13 +79,11 @@ Scrape.New = (function() {
         dataType: 'json',
         data: params
       })
-      .done(function() {
-        // console.log("success");
-        $('#loginModal').modal('hide');
+      .success(function() {
+        _success();
       })
       .fail(function() {
         _failure("Registration Error");
-        // console.log("error");
       });
   }
   /*END REGISTER FUNCTION*/
@@ -100,15 +98,13 @@ Scrape.New = (function() {
         dataType: 'json',
         data: params
       })
-      .done(function(data, textStatus) {
-        // console.log('Success');
+      .success(function(data, textStatus) {
         user_token = data.token;
         _success();
         flavors = data.flavors;
         drinks = data.drinks;
       })
       .fail(function(jqxhr, textStatus, errorThrown) {
-        // console.log("error");
         _failure("Login Error");
       });
   }
@@ -149,15 +145,12 @@ Scrape.New = (function() {
         dataType: 'json',
       })
       .done(function(data) {
-        // console.log("success");
         foundPairings = data.pairing;
         _popPairings(foundPairings, objectType);
       })
       .fail(function() {
-        // console.log("error");
       })
       .always(function() {
-        // console.log("complete");
       });
 
   }
@@ -173,7 +166,6 @@ Scrape.New = (function() {
 
   /*AUTOPOPULATOR*/
   function _autoPop(checkStr, $listEl, targetType) {
-    // console.log(checkStr, $listEl, targetType);
     $listEl.html('');
     checkStr = normalize(checkStr);
 
