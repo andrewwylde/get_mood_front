@@ -4,7 +4,7 @@ Scrape.New = (function() {
   var password, password_confirmation, email, firstName, lastName, user_token, user_id, foundPairings;
   loggedIn = false;
   // var domain = 'http://localhost:3000'
-  var domain = 'https://getmood.herokuapp.com'
+  var domain = 'https://getmood.herokuapp.com';
 
 
 
