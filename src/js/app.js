@@ -1,5 +1,6 @@
 var Scrape = Scrape || {};
 
+
 /*VAR DECLARATION*/
 var scrape, flavors, drinks, loggedIn;
 scrape = Scrape.New;
@@ -53,7 +54,6 @@ $(document).ready(function() {
       var keyCodeEscapes = [37,38,39,40];
       if (keyCodeEscapes.indexOf(event.keyCode) == -1){
         if (this.list.id == "icecream-datalist") {
-          console.log('scraping for ice');
           scrape.autoPop(this.value,$('#icecream-datalist'), "flavor");
         } else {
           scrape.autoPop(this.value,$('#coffee-datalist'), "coffee");
