@@ -80,12 +80,5 @@ $('.mood').on('click', function(event) {
 });
 /*END GET PAIRINGS*/
 
-/* DESTROY */
-// $('#destroy-me').on('click', function(event) {
-//   console.log('destroid');
-//   scrape.destroy();
-// });
-/* END DESTROY */
-
 
 }); /*################## END OF $.READY ##################*/
